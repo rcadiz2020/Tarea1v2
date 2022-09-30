@@ -5,15 +5,25 @@ import java.util.Date;
 public class Tarea1 {
 
     public static void main(String[] args) {
+
+        OrdenCompra oc = new OrdenCompra();
+
         Articulo pera = new Articulo(100, "pera", "se come", 350);
         Articulo manzana = new Articulo(200, "manzana", "se come", 300);
         Articulo platano = new Articulo(300, "platano", "se come", 250);
         Articulo kiwi = new Articulo(400, "kiwi", "se come", 500);
         Articulo durazno = new Articulo(500, "durazno", "se come", 450);
-        Cliente eduardo = new Cliente("Eduardo Arevalo", "20.251.390-5");
-        Cliente jean = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
+
+        Cliente cliente1 = new Cliente("Eduardo Arevalo", "20.251.390-5");
+        Cliente cliente2 = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
+
         Direccion dir = new Direccion("Victor Lamas 1290");
-        Pago p = new Pago(5000);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 }
@@ -39,9 +49,11 @@ class OrdenCompra extends DetalleOrden {
         compras = new ArrayList();
 
     }
+    public void AgregarOrden(Articulo articulo, int item){
+        DetalleOrden DO = new DetalleOrden(articulo,item);
+    }
 
     public void calcPrecio() {
-
     }
 
     public void calcPrecioSinIVA() {
@@ -55,7 +67,8 @@ class OrdenCompra extends DetalleOrden {
     public void calcPeso() {
 
     }
-    public float getArticulo(float precio){
+
+    public float getArticulo(float precio) {
         return precio;
     }
 
@@ -66,24 +79,25 @@ class DetalleOrden {
     private int cantidad;
     public Articulo articulo;
 
-    public DetalleOrden() {
-
+    public DetalleOrden(Articulo articulo, int cantidad) {
+        this.articulo = articulo;
+        this.cantidad = cantidad;
     }
 
-    public void calcPrecio() {
-        
+    public float calcPrecio() {
+        return cantidad * //precioarticulo//;
     }
 
-    public void calcPrecioSinIVA() {
-
+    public float calcPrecioSinIVA() {
+        return cantidad * //precioarticulo*0.81//;
     }
 
-    public void calcIVA() {
-
+    public float calcIVA() {
+        return cantidad * //precioarticulo*0.19//;
     }
 
-    public void calcPeso() {
-
+    public int calcPeso() {
+        return cantidad * //pesoarticulo//;
     }
 }
 
@@ -167,16 +181,16 @@ class DocTributario {
     }
 }
 
-class Boleta {
+class Boleta extends DocTributario {
 
     public Boleta() {
-
+        super();
     }
 }
 
-class Factura {
+class Factura extends DocTributario {
 
     public Factura() {
-
+        super();
     }
 }
