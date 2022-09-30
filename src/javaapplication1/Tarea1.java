@@ -5,15 +5,15 @@ import java.util.Date;
 public class Tarea1 {
 
     public static void main(String[] args) {
-        Articulo a1 = new Articulo(100, "pera", "se come", 1000);
-        Articulo a2 = new Articulo(200, "manzana", "se come", 1000);
-        Articulo a3 = new Articulo(300, "platano", "se come", 1000);
-        Articulo a4 = new Articulo(400, "kiwi", "se come", 1000);
-        Articulo a5 = new Articulo(500, "durazno", "se come", 1000);
-        Cliente c1 = new Cliente("Eduadro Arevalo", "20.251.390-5");
-        Cliente c2 = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
-        Direccion d = new Direccion("Victor Lamas 1290");
-        Pago p1 = new Pago(5000)
+        Articulo pera = new Articulo(100, "pera", "se come", 350);
+        Articulo manzana = new Articulo(200, "manzana", "se come", 300);
+        Articulo platano = new Articulo(300, "platano", "se come", 250);
+        Articulo kiwi = new Articulo(400, "kiwi", "se come", 500);
+        Articulo durazno = new Articulo(500, "durazno", "se come", 450);
+        Cliente eduardo = new Cliente("Eduardo Arevalo", "20.251.390-5");
+        Cliente jean = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
+        Direccion dir = new Direccion("Victor Lamas 1290");
+        Pago p = new Pago(5000);
     }
 
 }
