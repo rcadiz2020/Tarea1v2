@@ -1,116 +1,169 @@
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Tarea1 {
 
     public static void main(String[] args) {
+        Articulo a1 = new Articulo(100, "pera", "se come", 1000);
+        Articulo a2 = new Articulo(200, "manzana", "se come", 1000);
+        Articulo a3 = new Articulo(300, "platano", "se come", 1000);
+        Articulo a4 = new Articulo(400, "kiwi", "se come", 1000);
+        Articulo a5 = new Articulo(500, "durazno", "se come", 1000);
 
     }
 
 }
 
-class Cliente{
+class Cliente {
+
     private String nombre;
-    private String rut; 
-    public Cliente(){
+    private String rut;
+
+    public Cliente() {
 
     }
 }
 
-class OrdenCompra extends DetalleOrden{
+class OrdenCompra extends DetalleOrden {
+
     private Date fecha;
     private String estado;
-    public OrdenCompra(){
+    public ArrayList<DetalleOrden> compras[];
+
+    public OrdenCompra() {
+
+    }
+
+    public void calcPrecio() {
+
+    }
+
+    public void calcPrecioSinIVA() {
+
+    }
+
+    public void calcIVA() {
+
+    }
+
+    public void calcPeso() {
 
     }
 
 }
 
-class DetalleOrden{
+class DetalleOrden {
+
     private int cantidad;
-    public DetalleOrden(){
+    public Articulo articulo;
+
+    public DetalleOrden() {
 
     }
-    public void calcPrecioSinIVA(){
+
+    public void calcPrecio() {
 
     }
-    public void calcIVA(){
+
+    public void calcPrecioSinIVA() {
 
     }
-    public void calcPrecio(){
+
+    public void calcIVA() {
 
     }
-    public void calcPeso(){
+
+    public void calcPeso() {
 
     }
 }
 
-class Articulo{
+class Articulo {
+
     private float peso;
     private String nombre;
     private String descripcion;
     private float precio;
-    public Articulo(){
 
+    public Articulo(float peso, String nombre, String descripcion, float precio) {
+        this.peso = peso;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
 }
 
-class Direccion{
+class Direccion {
+
     private String direccion;
-    public Direccion(){
+
+    public Direccion() {
 
     }
 }
 
-class Pago{
+class Pago {
+
     private float monto;
     private Date fecha;
-    public Pago(){
+
+    public Pago() {
 
     }
 }
 
-class Tarjeta{
+class Tarjeta {
+
     private String tipo;
     private String numTransaccion;
-    public Tarjeta(){
+
+    public Tarjeta() {
 
     }
 }
 
-class Transferencia{
+class Transferencia {
+
     private String banco;
     private String numCuenta;
-    public Transferencia(){
+
+    public Transferencia() {
 
     }
 }
 
-class Efectivo{
-    public void calcDevolucion(){
+class Efectivo {
+
+    public void calcDevolucion() {
 
     }
-    public Efectivo(){
 
-    }
-}
-
-class Boleta{
-    public Boleta(){
+    public Efectivo() {
 
     }
 }
 
-class Factura{
-    public Factura(){
+class Boleta {
+
+    public Boleta() {
 
     }
 }
 
-class DocTributario{
+class Factura {
+
+    public Factura() {
+
+    }
+}
+
+class DocTributario {
+
     private String numero;
     private String rut;
     private Date fecha;
-    public DocTributario(){
-        
+
+    public DocTributario() {
     }
 }
