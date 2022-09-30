@@ -54,18 +54,31 @@ class OrdenCompra extends DetalleOrden {
     }
 
     public void calcPrecio() {
+        /* for(int i; i < compras.size; i++){
+            variable += copmras.calcPrecio;
+            return variable;
+        } */
     }
 
     public void calcPrecioSinIVA() {
-
+       /* for(int i; i < compras.size; i++){
+            variable += copmras.calcPrecioSinIVA;
+            return variable;
+        } */
     }
 
     public void calcIVA() {
-
+       /* for(int i; i < compras.size; i++){
+            variable += copmras.calcIVA;
+            return variable;
+        } */
     }
 
     public void calcPeso() {
-
+       /* for(int i; i < compras.size; i++){
+            variable += copmras.calcPeso;
+            return variable;
+        } */        
     }
 
     public float getArticulo(float precio) {
@@ -85,19 +98,19 @@ class DetalleOrden {
     }
 
     public float calcPrecio() {
-        return cantidad * //precioarticulo//;
+        return cantidad * getPrecio;//precioarticulo//;
     }
 
     public float calcPrecioSinIVA() {
-        return cantidad * //precioarticulo*0.81//;
+        return cantidad * (getPrecio * 0.81);//precioarticulo*0.81//;
     }
 
     public float calcIVA() {
-        return cantidad * //precioarticulo*0.19//;
+        return cantidad * (getPrecio * 0.19);//precioarticulo*0.19//;
     }
 
     public int calcPeso() {
-        return cantidad * //pesoarticulo//;
+        return cantidad * getPeso;//pesoarticulo//;
     }
 }
 
@@ -113,6 +126,14 @@ class Articulo {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+    }
+
+    public float getPeso(){
+        return peso;
+    }
+
+    public float getPrecio(){
+        return precio;
     }
 }
 
@@ -142,6 +163,7 @@ class Tarjeta extends Pago {
     private String numTransaccion;
 
     public Tarjeta(String tipo, String numTransaccion) {
+        super();
         this.tipo = tipo;
         this.numTransaccion = numTransaccion;
     }
@@ -153,6 +175,7 @@ class Transferencia extends Pago {
     private String numCuenta;
 
     public Transferencia(String banco, String numCuenta) {
+        super();
         this.banco = banco;
         this.numCuenta = numCuenta;
     }
@@ -161,7 +184,7 @@ class Transferencia extends Pago {
 class Efectivo extends Pago {
 
     public Efectivo(float monto) {
-
+        super();
     }
 
     public void calcDevolucion(float costo) {
