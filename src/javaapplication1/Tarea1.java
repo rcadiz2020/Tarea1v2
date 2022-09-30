@@ -10,6 +10,9 @@ public class Tarea1 {
         Articulo a3 = new Articulo(300, "platano", "se come", 1000);
         Articulo a4 = new Articulo(400, "kiwi", "se come", 1000);
         Articulo a5 = new Articulo(500, "durazno", "se come", 1000);
+        Cliente c1 = new Cliente("Eduadro Arevalo", "20.251.390-5");
+        Cliente c2 = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
+        Direccion d = new Direccion("Victor Lamas 1290");
 
     }
 
@@ -20,8 +23,9 @@ class Cliente {
     private String nombre;
     private String rut;
 
-    public Cliente() {
-
+    public Cliente(String nombre, String rut) {
+        this.nombre=nombre;
+        this.rut=rut;
     }
 }
 
@@ -98,8 +102,8 @@ class Direccion {
 
     private String direccion;
 
-    public Direccion() {
-
+    public Direccion(String direccion) {
+        this.direccion=direccion;
     }
 }
 
@@ -113,7 +117,7 @@ class Pago {
     }
 }
 
-class Tarjeta {
+class Tarjeta extends Pago{
 
     private String tipo;
     private String numTransaccion;
@@ -123,7 +127,7 @@ class Tarjeta {
     }
 }
 
-class Transferencia {
+class Transferencia extends Pago{
 
     private String banco;
     private String numCuenta;
@@ -133,10 +137,10 @@ class Transferencia {
     }
 }
 
-class Efectivo {
+class Efectivo extends Pago{
 
-    public void calcDevolucion() {
-
+    public float calcDevolucion(float dinero, float costo) {
+        return dinero - costo;
     }
 
     public Efectivo() {
