@@ -13,7 +13,7 @@ public class Tarea1 {
         Cliente c1 = new Cliente("Eduadro Arevalo", "20.251.390-5");
         Cliente c2 = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
         Direccion d = new Direccion("Victor Lamas 1290");
-
+        Pago p1 = new Pago(5000)
     }
 
 }
@@ -24,8 +24,8 @@ class Cliente {
     private String rut;
 
     public Cliente(String nombre, String rut) {
-        this.nombre=nombre;
-        this.rut=rut;
+        this.nombre = nombre;
+        this.rut = rut;
     }
 }
 
@@ -33,9 +33,10 @@ class OrdenCompra extends DetalleOrden {
 
     private Date fecha;
     private String estado;
-    public ArrayList<DetalleOrden> compras[];
+    public ArrayList<DetalleOrden> compras;
 
     public OrdenCompra() {
+        compras = new ArrayList();
 
     }
 
@@ -54,6 +55,9 @@ class OrdenCompra extends DetalleOrden {
     public void calcPeso() {
 
     }
+    public float getArticulo(float precio){
+        return precio;
+    }
 
 }
 
@@ -67,7 +71,7 @@ class DetalleOrden {
     }
 
     public void calcPrecio() {
-
+        
     }
 
     public void calcPrecioSinIVA() {
@@ -103,48 +107,63 @@ class Direccion {
     private String direccion;
 
     public Direccion(String direccion) {
-        this.direccion=direccion;
+        this.direccion = direccion;
     }
 }
+////////////////////////////////////////////////7
 
 class Pago {
 
     private float monto;
     private Date fecha;
 
-    public Pago() {
-
+    public Pago(float monto) {
+        this.monto = monto;
     }
 }
 
-class Tarjeta extends Pago{
+class Tarjeta extends Pago {
 
     private String tipo;
     private String numTransaccion;
 
-    public Tarjeta() {
-
+    public Tarjeta(String tipo, String numTransaccion) {
+        this.tipo = tipo;
+        this.numTransaccion = numTransaccion;
     }
 }
 
-class Transferencia extends Pago{
+class Transferencia extends Pago {
 
     private String banco;
     private String numCuenta;
 
-    public Transferencia() {
-
+    public Transferencia(String banco, String numCuenta) {
+        this.banco = banco;
+        this.numCuenta = numCuenta;
     }
 }
 
-class Efectivo extends Pago{
+class Efectivo extends Pago {
 
-    public float calcDevolucion(float dinero, float costo) {
-        return dinero - costo;
+    public Efectivo(float monto) {
+
     }
 
-    public Efectivo() {
+    public void calcDevolucion(float costo) {
+        float devolucion = 0;
+        devolucion = monto - super()costo;
+    }
+}
+/////////////////////////////////////////
 
+class DocTributario {
+
+    private String numero;
+    private String rut;
+    private Date fecha;
+
+    public DocTributario() {
     }
 }
 
@@ -159,15 +178,5 @@ class Factura {
 
     public Factura() {
 
-    }
-}
-
-class DocTributario {
-
-    private String numero;
-    private String rut;
-    private Date fecha;
-
-    public DocTributario() {
     }
 }
