@@ -44,6 +44,7 @@ class OrdenCompra extends DetalleOrden {
     private Date fecha;
     private String estado;
     public ArrayList<DetalleOrden> compras;
+    public float variable;
 
     public OrdenCompra() {
         compras = new ArrayList();
@@ -53,32 +54,38 @@ class OrdenCompra extends DetalleOrden {
         DetalleOrden DO = new DetalleOrden(articulo,item);
     }
 
-    public void calcPrecio() {
-        /* for(int i; i < compras.size; i++){
+    public float calcPrecio() {
+        for(int i; i < compras.length; i++){
             variable += copmras.calcPrecio;
             return variable;
-        } */
+        } 
     }
 
-    public void calcPrecioSinIVA() {
-       /* for(int i; i < compras.size; i++){
-            variable += copmras.calcPrecioSinIVA;
-            return variable;
-        } */
+    public float calcPrecioSinIVA() {
+        int i;
+        if(i=0){
+            return 0;
+        }
+        else{
+            for(i = 0; i < compras.length; i++){
+                variable += calcPrecioSinIVA();
+                return variable;
+            } 
+        }
     }
 
-    public void calcIVA() {
-       /* for(int i; i < compras.size; i++){
+    public float calcIVA() {
+        for(int i; i < compras.length; i++){
             variable += copmras.calcIVA;
             return variable;
-        } */
+        } 
     }
 
-    public void calcPeso() {
-       /* for(int i; i < compras.size; i++){
+    public float calcPeso() {
+        for(int i; i < compras.length; i++){
             variable += copmras.calcPeso;
             return variable;
-        } */        
+        }        
     }
 
     public float getArticulo(float precio) {
@@ -109,7 +116,7 @@ class DetalleOrden {
         return cantidad * (getPrecio * 0.19);//precioarticulo*0.19//;
     }
 
-    public int calcPeso() {
+    public float calcPeso() {
         return cantidad * getPeso;//pesoarticulo//;
     }
 }
