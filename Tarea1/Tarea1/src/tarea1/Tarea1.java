@@ -202,20 +202,22 @@ class DocTributario {
     private String rut;
     private Date fecha;
 
-    public DocTributario() {
+    public DocTributario(String numero, String rut) {
+        this.numero = numero;
+        this.rut = rut;
     }
 }
 
 class Boleta extends DocTributario {
 
-    public Boleta() {
-        super();
+    public Boleta(String numero, String rut) {
+        super(numero, rut);
     }
 }
 
 class Factura extends DocTributario {
 
-    public Factura() {
-        super();
+    public Factura(String numero, String rut) {
+        super(numero, rut);
     }
 }
