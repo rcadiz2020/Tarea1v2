@@ -1,3 +1,4 @@
+package tarea1;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,53 +40,48 @@ class Cliente {
     }
 }
 
-class OrdenCompra extends DetalleOrden {
+class OrdenCompra {
 
     private Date fecha;
     private String estado;
     public ArrayList<DetalleOrden> compras;
-    public float variable;
 
     public OrdenCompra() {
         compras = new ArrayList();
 
     }
-    public void AgregarOrden(Articulo articulo, int item){
-        DetalleOrden DO = new DetalleOrden(articulo,item);
+
+    public void AgregarOrden(Articulo articulo, int item) {
+        DetalleOrden DO = new DetalleOrden(articulo, item);
     }
 
     public float calcPrecio() {
-        for(int i; i < compras.length; i++){
-            variable += copmras.calcPrecio;
-            return variable;
-        } 
+        float variable = 0;
+        for (int i = 0; i < compras.size(); i++) {
+            variable += compras.get(i).calcPrecio();
+        }
+        return variable;
     }
 
     public float calcPrecioSinIVA() {
-        int i;
-        if(i=0){
-            return 0;
+        float variable = 0;
+        for (int i = 0; i < compras.size(); i++) {
+            variable += compras.get(i).calcPrecioSinIVA();
         }
-        else{
-            for(i = 0; i < compras.length; i++){
-                variable += calcPrecioSinIVA();
-                return variable;
-            } 
-        }
+        return variable;
     }
 
     public float calcIVA() {
-        for(int i; i < compras.length; i++){
-            variable += copmras.calcIVA;
-            return variable;
-        } 
+        return calcPrecio() - calcPrecioSinIVA();
     }
 
     public float calcPeso() {
-        for(int i; i < compras.length; i++){
-            variable += copmras.calcPeso;
-            return variable;
-        }        
+        float variable = 0;
+        for (int i = 0; i < compras.size(); i++) {
+            variable += compras.get(i).calcPeso();
+
+        }
+        return variable;
     }
 
     public float getArticulo(float precio) {
@@ -105,19 +101,19 @@ class DetalleOrden {
     }
 
     public float calcPrecio() {
-        return cantidad * getPrecio;//precioarticulo//;
+        return cantidad * articulo.getPrecio();
     }
 
     public float calcPrecioSinIVA() {
-        return cantidad * (getPrecio * 0.81);//precioarticulo*0.81//;
+        return cantidad * (articulo.getPrecio() * 0.81f);
     }
 
     public float calcIVA() {
-        return cantidad * (getPrecio * 0.19);//precioarticulo*0.19//;
+        return cantidad * (articulo.getPrecio() * 0.19f);
     }
 
     public float calcPeso() {
-        return cantidad * getPeso;//pesoarticulo//;
+        return cantidad * articulo.getPeso();
     }
 }
 
@@ -135,11 +131,11 @@ class Articulo {
         this.precio = precio;
     }
 
-    public float getPeso(){
+    public float getPeso() {
         return peso;
     }
 
-    public float getPrecio(){
+    public float getPrecio() {
         return precio;
     }
 }
@@ -152,7 +148,7 @@ class Direccion {
         this.direccion = direccion;
     }
 }
-////////////////////////////////////////////////7
+
 
 class Pago {
 
@@ -169,8 +165,8 @@ class Tarjeta extends Pago {
     private String tipo;
     private String numTransaccion;
 
-    public Tarjeta(String tipo, String numTransaccion) {
-        super();
+    public Tarjeta(String tipo, String numTransaccion,float monto) {
+        super(monto);
         this.tipo = tipo;
         this.numTransaccion = numTransaccion;
     }
@@ -181,8 +177,8 @@ class Transferencia extends Pago {
     private String banco;
     private String numCuenta;
 
-    public Transferencia(String banco, String numCuenta) {
-        super();
+    public Transferencia(String banco, String numCuenta,float monto) {
+        super(monto);
         this.banco = banco;
         this.numCuenta = numCuenta;
     }
@@ -191,15 +187,14 @@ class Transferencia extends Pago {
 class Efectivo extends Pago {
 
     public Efectivo(float monto) {
-        super();
+        super(monto);
     }
 
-    public void calcDevolucion(float costo) {
-        float devolucion = 0;
-        devolucion = monto - super()costo;
+    public void calcDevolucion(float costo, float monto) {
+        float devolucion;
+        devolucion = monto - costo;
     }
 }
-/////////////////////////////////////////
 
 class DocTributario {
 
