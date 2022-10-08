@@ -15,10 +15,15 @@ public class Tarea1 {
         Articulo kiwi = new Articulo(400, "kiwi", "se come", 500);
         Articulo durazno = new Articulo(500, "durazno", "se come", 450);
 
-        Cliente cliente1 = new Cliente("Eduardo Arevalo", "20.251.390-5");
-        Cliente cliente2 = new Cliente("Jean-Pierre Polnareff", "19.990.160-2");
+        Cliente cliente1 = new Cliente("Eduardo", "20.251.390-5");
+        Cliente cliente2 = new Cliente("Juan", "19.990.160-2");
 
         Direccion dir = new Direccion("Victor Lamas 1290");
+        Direccion dir2 = new Direccion("eloisa urrutia 463");
+        
+        oc.SetCliente(cliente1);
+        oc.AgregarOrden(manzana, 4);
+        oc.AgregarOrden(kiwi, 3);
 
         System.out.println();
         System.out.println();
@@ -30,13 +35,36 @@ public class Tarea1 {
 }
 
 class Cliente {
-
+    
     private String nombre;
     private String rut;
-
-    public Cliente(String nombre, String rut) {
+    private Direccion direccion;
+    
+    public Cliente(String nombre, String rut,Direccion direccion) {
         this.nombre = nombre;
         this.rut = rut;
+        this.direccion = direccion;
+    }
+    public String GetNombre(){
+        return nombre;
+    }
+    public String GetRut(){
+        return rut;
+    }
+    public Direccion GetDireccion(){
+        return direccion;
+    }
+    
+}
+class Direccion {
+
+    private String direccion;
+
+    public Direccion(String direccion) {
+        this.direccion = direccion;
+    }
+    public String GetDireccion(){
+        return direccion;
     }
 }
 
@@ -45,6 +73,7 @@ class OrdenCompra {
     private Date fecha;
     private String estado;
     public ArrayList<DetalleOrden> compras;
+    public Cliente cliente; 
 
     public OrdenCompra() {
         compras = new ArrayList();
@@ -52,10 +81,11 @@ class OrdenCompra {
     }
 
     public void AgregarOrden(Articulo articulo, int item) {
-        DetalleOrden DO = new DetalleOrden(articulo, item);
+        DetalleOrden Do = new DetalleOrden(articulo, item);
+        compras.add(Do);
     }
 
-    public float calcPrecio() {
+    public float CalcPrecio() {
         float variable = 0;
         for (int i = 0; i < compras.size(); i++) {
             variable += compras.get(i).calcPrecio();
@@ -63,7 +93,7 @@ class OrdenCompra {
         return variable;
     }
 
-    public float calcPrecioSinIVA() {
+    public float CalcPrecioSinIVA() {
         float variable = 0;
         for (int i = 0; i < compras.size(); i++) {
             variable += compras.get(i).calcPrecioSinIVA();
@@ -71,11 +101,11 @@ class OrdenCompra {
         return variable;
     }
 
-    public float calcIVA() {
+    public float CalcIVA() {
         return calcPrecio() - calcPrecioSinIVA();
     }
 
-    public float calcPeso() {
+    public float CalcPeso() {
         float variable = 0;
         for (int i = 0; i < compras.size(); i++) {
             variable += compras.get(i).calcPeso();
@@ -84,8 +114,17 @@ class OrdenCompra {
         return variable;
     }
 
-    public float getArticulo(float precio) {
+    public float CetArticulo(float precio) {
         return precio;
+    }
+
+    public void SetCliente(Cliente c) {
+        this.cliente = c;
+        
+    }
+
+    public Cliente GetCliente() {
+        return cliente;
     }
 
 }
@@ -100,19 +139,19 @@ class DetalleOrden {
         this.cantidad = cantidad;
     }
 
-    public float calcPrecio() {
+    public float CalcPrecio() {
         return cantidad * articulo.getPrecio();
     }
 
-    public float calcPrecioSinIVA() {
+    public float CalcPrecioSinIVA() {
         return cantidad * (articulo.getPrecio() * 0.81f);
     }
 
-    public float calcIVA() {
+    public float CalcIVA() {
         return cantidad * (articulo.getPrecio() * 0.19f);
     }
 
-    public float calcPeso() {
+    public float CalcPeso() {
         return cantidad * articulo.getPeso();
     }
 }
@@ -131,24 +170,14 @@ class Articulo {
         this.precio = precio;
     }
 
-    public float getPeso() {
+    public float GetPeso() {
         return peso;
     }
 
-    public float getPrecio() {
+    public float GetPrecio() {
         return precio;
     }
 }
-
-class Direccion {
-
-    private String direccion;
-
-    public Direccion(String direccion) {
-        this.direccion = direccion;
-    }
-}
-
 
 class Pago {
 
@@ -165,7 +194,7 @@ class Tarjeta extends Pago {
     private String tipo;
     private String numTransaccion;
 
-    public Tarjeta(String tipo, String numTransaccion,float monto) {
+    public Tarjeta(String tipo, String numTransaccion, float monto) {
         super(monto);
         this.tipo = tipo;
         this.numTransaccion = numTransaccion;
@@ -177,7 +206,7 @@ class Transferencia extends Pago {
     private String banco;
     private String numCuenta;
 
-    public Transferencia(String banco, String numCuenta,float monto) {
+    public Transferencia(String banco, String numCuenta, float monto) {
         super(monto);
         this.banco = banco;
         this.numCuenta = numCuenta;
@@ -190,7 +219,7 @@ class Efectivo extends Pago {
         super(monto);
     }
 
-    public void calcDevolucion(float costo, float monto) {
+    public void CalcDevolucion(float costo, float monto) {
         float devolucion;
         devolucion = monto - costo;
     }
@@ -203,8 +232,11 @@ class DocTributario {
     private Date fecha;
 
     public DocTributario(String numero, String rut) {
+
         this.numero = numero;
         this.rut = rut;
+        this.fecha = new Date();
+        System.out.println(this.fecha);
     }
 }
 
