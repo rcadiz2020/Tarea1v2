@@ -24,12 +24,14 @@ public class Tarea1 {
         oc.SetCliente(cliente1);
         oc.AgregarOrden(manzana, 4);
         oc.AgregarOrden(kiwi, 3);
+        oc.AgregarPago(5000);
 
         oc.SetCliente(cliente2);
         oc.AgregarOrden(platano, 1);
         oc.AgregarOrden(durazno, 2);
         oc.AgregarOrden(pera, 6);
         oc.AgregarOrden(kiwi, 6);
+        oc.AgregarPago(5000);
 
         System.out.println();
         System.out.println();
@@ -84,6 +86,7 @@ class OrdenCompra {
     private Date fecha;
     private String estado;
     public ArrayList<DetalleOrden> compras;
+    public ArrayList<Pago> pago;
     public Cliente cliente;
 
     public OrdenCompra() {
@@ -94,6 +97,11 @@ class OrdenCompra {
     public void AgregarOrden(Articulo articulo, int item) {
         DetalleOrden Do = new DetalleOrden(articulo, item);
         compras.add(Do);
+    }
+
+    public void AgregarPago(int saldo) {
+        Pago p = new Pago(saldo);
+        pago.add(p);
     }
 
     public float CalcPrecio() {
