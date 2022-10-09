@@ -28,24 +28,40 @@ public class Tarea1 {
         oc1.SetCliente(cliente1);
         oc1.AgregarOrden(manzana, 4);
         oc1.AgregarOrden(kiwi, 3);
-        oc1.AgregarPago(2500);
+        Efectivo efectivo1 = new Efectivo(2500);
 
         oc2.SetCliente(cliente2);
         oc2.AgregarOrden(platano, 1);
         oc2.AgregarOrden(durazno, 2);
         oc2.AgregarOrden(pera, 6);
         oc2.AgregarOrden(kiwi, 6);
-        oc2.AgregarPago(5000);
+        Tarjeta tarjeta1 = new Tarjeta("debito", "1254635", 6250);
 
         oc3.SetCliente(cliente3);
-        oc2.AgregarOrden(pera, 6);
-        oc2.AgregarOrden(kiwi, 6);
-        oc2.AgregarPago(3000);
+        oc3.AgregarOrden(pera, 6);
+        oc3.AgregarOrden(kiwi, 6);
+        Transferencia transf1 = new Transferencia("Estado", "254639578", 5100);
 
-    
+        System.out.println(oc1.getFecha());
+        System.out.println("Cliente: " + oc1.GetCliente());
+        System.out.println("Sin IVA: $" + oc1.CalcPrecioSinIVA());
+        System.out.println("IVA: $:" + oc1.CalcIVA());
+        System.out.println("Total: $" + oc1.CalcPrecio());
+        System.out.println("Peso:" + oc1.CalcPeso() + " gramos");
 
-        System.out.println();
+        System.out.println(oc2.getFecha());
+        System.out.println("Cliente: " + oc2.GetCliente());
+        System.out.println("Sin IVA: $" + oc2.CalcPrecioSinIVA());
+        System.out.println("IVA: $:" + oc2.CalcIVA());
+        System.out.println("Total: $" + oc2.CalcPrecio());
+        System.out.println("Peso:" + oc2.CalcPeso() + " gramos");
 
+        System.out.println(oc3.getFecha());
+        System.out.println("Cliente: " + oc3.GetCliente());
+        System.out.println("Sin IVA: $" + oc3.CalcPrecioSinIVA());
+        System.out.println("IVA: $:" + oc3.CalcIVA());
+        System.out.println("Total: $" + oc3.CalcPrecio());
+        System.out.println("Peso:" + oc3.CalcPeso() + " gramos");
     }
 
 }
@@ -107,10 +123,6 @@ class OrdenCompra {
         compras.add(Do);
     }
 
-    public void AgregarPago(int saldo) {
-        Pago p = new Pago(saldo);
-        pago.add(p);
-    }
 
     public float CalcPrecio() {
         float precio = 0;
@@ -151,6 +163,10 @@ class OrdenCompra {
 
     public Cliente GetCliente() {
         return cliente;
+    }
+
+    public Date getFecha(){
+        return fecha;
     }
 }
 
@@ -202,6 +218,14 @@ class Articulo {
     public float GetPrecio() {
         return precio;
     }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public String getDescripcion(){
+        return descripcion;
+    }
 }
 
 class Pago {
@@ -212,6 +236,15 @@ class Pago {
     public Pago(float monto) {
         this.monto = monto;
     }
+
+    public void AgregarPago(int saldo) {
+        monto = monto + saldo;
+    }
+
+    public Date fechapago(){
+        return fecha;
+    }
+
 }
 
 class Tarjeta extends Pago {
@@ -223,6 +256,14 @@ class Tarjeta extends Pago {
         super(monto);
         this.tipo = tipo;
         this.numTransaccion = numTransaccion;
+    }
+
+    public String getTipo(){
+        return tipo;
+    }
+
+    public String getNumTransaccion(){
+        return numTransaccion;
     }
 }
 
