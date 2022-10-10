@@ -43,21 +43,21 @@ public class Tarea1 {
         Transferencia transf1 = new Transferencia("Estado", "254639578", 5100);
 
         System.out.println(oc1.getFecha());
-        System.out.println("Cliente: " + oc1.GetCliente());
+        System.out.println("Cliente: " + oc1.getCliente());
         System.out.println("Sin IVA: $" + oc1.CalcPrecioSinIVA());
         System.out.println("IVA: $:" + oc1.CalcIVA());
         System.out.println("Total: $" + oc1.CalcPrecio());
         System.out.println("Peso:" + oc1.CalcPeso() + " gramos");
 
         System.out.println(oc2.getFecha());
-        System.out.println("Cliente: " + oc2.GetCliente());
+        System.out.println("Cliente: " + oc2.getCliente());
         System.out.println("Sin IVA: $" + oc2.CalcPrecioSinIVA());
         System.out.println("IVA: $:" + oc2.CalcIVA());
         System.out.println("Total: $" + oc2.CalcPrecio());
         System.out.println("Peso:" + oc2.CalcPeso() + " gramos");
 
         System.out.println(oc3.getFecha());
-        System.out.println("Cliente: " + oc3.GetCliente());
+        System.out.println("Cliente: " + oc3.getCliente());
         System.out.println("Sin IVA: $" + oc3.CalcPrecioSinIVA());
         System.out.println("IVA: $:" + oc3.CalcIVA());
         System.out.println("Total: $" + oc3.CalcPrecio());
@@ -74,7 +74,7 @@ class Direccion {
         this.direccion = direccion;
     }
 
-    public String GetDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 }
@@ -91,15 +91,15 @@ class Cliente {
         this.direccion = direccion;
     }
 
-    public String GetNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public String GetRut() {
+    public String getRut() {
         return rut;
     }
 
-    public Direccion GetDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
@@ -153,15 +153,15 @@ class OrdenCompra {
         return peso;
     }
 
-    public float CetArticulo(float precio) {
+    public float setArticulo(float precio) {
         return precio;
     }
 
-    public void SetCliente(Cliente c) {
+    public void setCliente(Cliente c) {
         this.cliente = c;
     }
 
-    public Cliente GetCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
@@ -181,19 +181,19 @@ class DetalleOrden {
     }
 
     public float CalcPrecio() {
-        return cantidad * articulo.GetPrecio();
+        return cantidad * articulo.getPrecio();
     }
 
     public float CalcPrecioSinIVA() {
-        return cantidad * (articulo.GetPrecio() * 0.81f);
+        return cantidad * (articulo.getPrecio() * 0.81f);
     }
 
     public float CalcIVA() {
-        return cantidad * (articulo.GetPrecio() * 0.19f);
+        return cantidad * (articulo.getPrecio() * 0.19f);
     }
 
     public float CalcPeso() {
-        return cantidad * articulo.GetPeso();
+        return cantidad * articulo.getPeso();
     }
 }
 
@@ -211,11 +211,11 @@ class Articulo {
         this.precio = precio;
     }
 
-    public float GetPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public float GetPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
