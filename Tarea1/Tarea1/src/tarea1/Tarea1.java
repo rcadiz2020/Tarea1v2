@@ -25,19 +25,19 @@ public class Tarea1 {
         Cliente cliente2 = new Cliente("Juan", "19.990.160-2", dir2);
         Cliente cliente3 = new Cliente("Ignacio", "21.365.258-9", dir3);
 
-        oc1.SetCliente(cliente1);
+        oc1.setCliente(cliente1);
         oc1.AgregarOrden(manzana, 4);
         oc1.AgregarOrden(kiwi, 3);
         Efectivo efectivo1 = new Efectivo(2500);
 
-        oc2.SetCliente(cliente2);
+        oc2.setCliente(cliente2);
         oc2.AgregarOrden(platano, 1);
         oc2.AgregarOrden(durazno, 2);
         oc2.AgregarOrden(pera, 6);
         oc2.AgregarOrden(kiwi, 6);
         Tarjeta tarjeta1 = new Tarjeta("debito", "1254635", 6250);
 
-        oc3.SetCliente(cliente3);
+        oc3.setCliente(cliente3);
         oc3.AgregarOrden(pera, 6);
         oc3.AgregarOrden(kiwi, 6);
         Transferencia transf1 = new Transferencia("Estado", "254639578", 5100);
@@ -77,6 +77,10 @@ class Direccion {
     public String getDireccion() {
         return direccion;
     }
+
+    public String toString(){
+        return "Direccion: " + direccion;
+    }
 }
 
 class Cliente {
@@ -103,6 +107,10 @@ class Cliente {
         return direccion;
     }
 
+    public String toString(){
+        return "Nombre: " + nombre + "\nRut: " + rut + "\nDireccion: " + direccion;
+    }
+
 }
 
 class OrdenCompra {
@@ -110,7 +118,6 @@ class OrdenCompra {
     private Date fecha;
     private String estado;
     public ArrayList<DetalleOrden> compras;
-    public ArrayList<Pago> pago;
     public Cliente cliente;
 
     public OrdenCompra() {
@@ -168,6 +175,11 @@ class OrdenCompra {
     public Date getFecha(){
         return fecha;
     }
+
+    public String toString(){
+        return "Fecha: " + fecha + "\nEstado: " + "\nDetalle: " + compras;
+    }
+
 }
 
 class DetalleOrden {
@@ -194,6 +206,10 @@ class DetalleOrden {
 
     public float CalcPeso() {
         return cantidad * articulo.getPeso();
+    }
+
+    public String toString(){
+        return articulo.toString() + " Cantidad:" + cantidad;
     }
 }
 
@@ -226,6 +242,10 @@ class Articulo {
     public String getDescripcion(){
         return descripcion;
     }
+
+    public String toString(){
+        return "Articulo: " + nombre + "\nDescripcion: " + descripcion + "\nPeso (gr): " + peso + "\n$" + precio;
+    }
 }
 
 class Pago {
@@ -243,6 +263,10 @@ class Pago {
 
     public Date fechapago(){
         return fecha;
+    }
+
+    public String toString(){
+        return "$" + monto + "\nFecha: " + fecha;
     }
 
 }
@@ -265,6 +289,10 @@ class Tarjeta extends Pago {
     public String getNumTransaccion(){
         return numTransaccion;
     }
+
+    public String toString(){
+        return "Tipo: " + "\nNumero de Transaccion: " + numTransaccion;
+    }
 }
 
 class Transferencia extends Pago {
@@ -286,6 +314,9 @@ class Transferencia extends Pago {
         return numCuenta;
     }
 
+    public String toString(){
+        return "Banco: " + banco + "\nNumero de cuenta: " + numCuenta;
+    }
 }
 
 class Efectivo extends Pago {
@@ -297,6 +328,10 @@ class Efectivo extends Pago {
     public void CalcDevolucion(float costo, float monto) {
         float devolucion;
         devolucion = monto - costo;
+    }
+
+    public String toString(){
+        return "Devolucion: " + devolucion;
     }
 }
 
@@ -323,6 +358,10 @@ class DocTributario {
 
     public Date getFecha(){
         return fecha;
+    }
+
+    public String toString(){
+        return "Numero: " + numero + "\nRut: " + rut + "\nFecha: " + fecha;
     }
 }
 
